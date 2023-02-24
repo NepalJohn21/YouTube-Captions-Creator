@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=360, initial-scale=1.0">
+    <title>Creating a new caption</title>
+</head>
+<body>
+    <h1 refstyle="title">YouTube Caption Creator</h1>
+    <h3>Caption Settings</h3>
+    <h4 title="The content.">Content</h4>
+    <textarea placeholder="Type Subtitle Content..." class="subtitle-content"></textarea>
+    <p class="mobile-heavy-message">Sorry, Don't add more than 1000 characters on this caption. The mobile is heavy very slow.</p>
+    <h4>Duration</h4>
+    <input class="subtitle-duration-hour" type="number" placeholder="Hours" min="0" max="9">
+    <div></div>
+    <input class="subtitle-duration-minute" type="number" placeholder="Minutes" min="0" max="59">
+    <div></div>
+    <input class="subtitle-duration-second" type="number" placeholder="Seconds" min="0" max="59">
+    <div></div>
+    <button onclick="add()">Add</button>
+    <h3>Code</h3>
+    <button onclick="newCode()">Generate a New Code</button>
+    <pre class="code-content"></pre>
+    <script>
+        var subtitleContent = document.querySelector(".subtitle-content")
+        var subtitleHour = document.querySelector(".subtitle-duration-hour")
+        var subtitleMinute = document.querySelector(".subtitle-duration-minute")
+        var subtitleSecond = document.querySelector(".subtitle-duration-second")
+        var mobileHeavyMessage = document.querySelector(".mobile-heavy-message")
+        var captions = [
+        ]
+        var code = "";
+
+        function add(content, second, minute, hour) {
+            
+        }
+
+        setInterval(() => {
+            if (subtitleContent.value.length > 1000) {
+                mobileHeavyMessage.style.display = "block";
+            } else {
+                mobileHeavyMessage.style.display = "none";
+            }
+        }, 100);
+    </script>
+</body>
+</html>

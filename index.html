@@ -13,13 +13,20 @@
     <textarea placeholder="Type Subtitle Content..." class="subtitle-content"></textarea>
     <p class="mobile-heavy-message">Sorry, Don't add more than 1000 characters on this caption. The mobile is heavy very slow.</p>
     <h4>Duration</h4>
+    <h5>Start</h5>
     <input class="subtitle-duration-hour" type="number" placeholder="Hours" min="0" max="9">
     <div></div>
     <input class="subtitle-duration-minute" type="number" placeholder="Minutes" min="0" max="59">
     <div></div>
     <input class="subtitle-duration-second" type="number" placeholder="Seconds" min="0" max="59">
+    <h5>End</h5>
+    <input class="subtitle-duration-hour1" type="number" placeholder="Hours" min="0" max="9">
     <div></div>
-    <button onclick="add(subtitleContent.value, subtitleSecond.value, subtitleMinute.value, subtitleHour.value)">Add</button>
+    <input class="subtitle-duration-minute1" type="number" placeholder="Minutes" min="0" max="59">
+    <div></div>
+    <input class="subtitle-duration-second1" type="number" placeholder="Seconds" min="0" max="59">
+    <div></div>
+    <button onclick="add(subtitleContent.value, subtitleSecond.value, subtitleMinute.value, subtitleHour.value, subtitleSecond1.value, subtitleMinute1.value, subtitleHour1.value)">Add</button>
     <h3>Code</h3>
     <button onclick="newCode()">Generate a New Code</button>
     <pre class="code-content"></pre>
@@ -28,13 +35,22 @@
         var subtitleHour = document.querySelector(".subtitle-duration-hour")
         var subtitleMinute = document.querySelector(".subtitle-duration-minute")
         var subtitleSecond = document.querySelector(".subtitle-duration-second")
+        var subtitleHour1 = document.querySelector(".subtitle-duration-hour1")
+        var subtitleMinute1 = document.querySelector(".subtitle-duration-minute1")
+        var subtitleSecond1 = document.querySelector(".subtitle-duration-second1")
         var mobileHeavyMessage = document.querySelector(".mobile-heavy-message")
         var captions = [
         ]
         var code = "";
 
-        function add(content, second, minute, hour) {
-            
+        function add(content, second, minute, hour, second1, minute1, hour1) {
+            captions.push({content: content, second: second, minute: minute, hour: hour, endSecond: second1, endMinute: minute1, endHour: hour1})
+        }
+
+        function newCode() {
+            for (let i = 0; i < captions.length; i++) {
+                code += "\n" + captions[i].hour + ":" + captions[i].minute + ":" + captions[i].second + "," + captions[i].endHour + ":" + captions[i].endMinute + ":" + captions[i].endSecond + "\n" + captions[i].content
+            }
         }
 
         setInterval(() => {
